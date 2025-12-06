@@ -16,197 +16,200 @@
     <main>
         <section class="controls">
             <div class="side-menu">
-                <button id="hair-options" onclick="showCard('hair')">
+                <button class="side-menu-btn active-btn" id="hair-options" onclick="showCard('hair')">
                     <img src="" alt="">
                 </button>
-                <button id="hair-colour-options" onclick="showCard('hair-colour')">
+                <button class="side-menu-btn" id="top-options" onclick="showCard('top')">
                     <img src="" alt="">
                 </button>
-                <button id="top-options" onclick="showCard('top')">
+                <button class="side-menu-btn" id="bottom-options" onclick="showCard('bottom')">
                     <img src="" alt="">
                 </button>
-                <button id="bottom-options" onclick="showCard('bottom')">
+                <button class="side-menu-btn" id="shoes-options" onclick="showCard('shoes')">
                     <img src="" alt="">
                 </button>
-                <button id="shoes-options" onclick="showCard('shoes')">
-                    <img src="" alt="">
-                </button>
-                <button id="accessories-options" onclick="showCard('accessories')">
-                    <img src="" alt="">
-                </button>
-                <button id="expressions-options" onclick="showCard('expressions')">
+                <button class="side-menu-btn" id="accessories-options" onclick="showCard('accessories')">
                     <img src="" alt="">
                 </button>
             </div>
             <div class="cards-container">
-                <div class="card active">
-                <h2>Hair</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Hair Colours</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Top</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Bottom</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Shoes</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Accessories</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
-            <div class="card active">
-                <h2>Expressions</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-            </div>
+                <div class="card active" id="card-hair">
+                    <h2>Hair</h2>
+                    <button class="hair-btn" onclick="setHair('hair1')">
+                        <img src="./~images/assets/hair1.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair2')">
+                        <img src="./~images/assets/hair2.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair3')">
+                        <img src="./~images/assets/hair3.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair4')">
+                        <img src="./~images/assets/hair4.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair5')">
+                        <img src="./~images/assets/hair5.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair6')">
+                        <img src="./~images/assets/hair6.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair7')">
+                        <img src="./~images/assets/hair7.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair8')">
+                        <img src="./~images/assets/hair8.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair9')">
+                        <img src="./~images/assets/hair9.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair10')">
+                        <img src="./~images/assets/hair10.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair11')">
+                        <img src="./~images/assets/hair11.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair12')">
+                        <img src="./~images/assets/hair12.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair13')">
+                        <img src="./~images/assets/hair13.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair14')">
+                        <img src="./~images/assets/hair14.png" alt="">
+                    </button>
+                    <button class="hair-btn" onclick="setHair('hair15')">
+                        <img src="./~images/assets/hair15.png" alt="">
+                    </button>
+                </div>
+                <div class="card" id="card-top">
+                    <h2>Top</h2>
+                    <button>
+                        <img src="./~images/assets/tshirt1.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/blusinha.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/coat.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/cropped.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/longsleeve.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/moletom1.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/moletom2.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/moletom3.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/openshirt.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/regata.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/regata2.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/shirt2.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/sweater.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/tshirt2.png" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/vest.png" alt="">
+                    </button>
+                </div>
+                <div class="card" id="card-bottom">
+                    <h2>Bottom</h2>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                </div>
+                <div class="card" id="card-shoes">
+                    <h2>Shoes</h2>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                </div>
+                <div class="card" id="card-accessories">
+                    <h2>Accessories</h2>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                    <button>
+                        <img src="" alt="">
+                    </button>
+                </div>
             </div>
         </section>
         <section class="middle-section">
@@ -214,87 +217,124 @@
                 <div class="avatar-container">
                     <img id="base-avatar" src="./~images/assets/base-avatar.png" class="pixel-art" width="450"
                         alt="Base Avatar">
+                        <img id="skinshadow-layer" src="./~images/assets/skin-shadows.png" class="pixel-art" width="450"
+                        alt="Base Avatar">
                     <img id="skin-layer" src="./~images/assets/skin-base.png" class="pixel-art" width="450"
                         alt="Base Avatar">
+                    <img id="eyes-stroke" src="./~images/assets/eyes-stroke.png" class="pixel-art" width="450"
+                        alt="Base Avatar">
+                    <img id="eyes-paint" src="./~images/assets/eyes-paint.png" class="pixel-art" width="450"
+                        alt="Base Avatar">
+                    <img id="hair-stroke" src="./~images/assets/stroke-hair1.png" class="pixel-art" width="450"
+                        alt="Hair">
+                    <img id="hair-shadows" src="./~images/assets/hair1-shadows.png" class="pixel-art" width="450" alt="Hair">
+                    <img id="hair-paint" src="./~images/assets/hair1.png" class="pixel-art" width="450" alt="Hair">
                 </div>
-                <img id="eyes-layer" src="" alt="">
-                <img id="hair-layer" src="" alt="">
                 <img id="top-layer" src="" alt="">
                 <img id="bottom-layer" src="" alt="">
                 <img id="shoes-layer" src="" alt="">
-                <img id="accessory-layer" src="" alt="">
+                <img id="accessories-layer" src="" alt="">
             </div>
-            <div id="skin-colours-options">
-                <button class="skin-colour-button" onclick="setSkinColour('skin1')">
-                    <img src="./~images/assets/skin1.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin2')">
-                    <img src="./~images/assets/skin2.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin3')">
-                    <img src="./~images/assets/skin3.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin4')">
-                    <img src="./~images/assets/skin4.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin5')">
-                    <img src="./~images/assets/skin5.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin6')">
-                    <img src="./~images/assets/skin6.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin7')">
-                    <img src="./~images/assets/skin7.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin8')">
-                    <img src="./~images/assets/skin8.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin9')">
-                    <img src="./~images/assets/skin9.png" alt="">
-                </button>
-                <button class="skin-colour-button" onclick="setSkinColour('skin10')">
-                    <img src="./~images/assets/skin10.png" alt="">
-                </button>
-            </div>
+            <div class="skin-colours" id="skin-colours-options">
+                    <button>
+                        <img src="./~images/assets/skin1.png" onclick="setSkinColour('skin1')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin2.png" onclick="setSkinColour('skin2')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin3.png" onclick="setSkinColour('skin3')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin4.png" onclick="setSkinColour('skin4')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin5.png" onclick="setSkinColour('skin5')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin6.png" onclick="setSkinColour('skin6')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin7.png" onclick="setSkinColour('skin7')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin8.png" onclick="setSkinColour('skin8')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin9.png" onclick="setSkinColour('skin9')" alt="">
+                    </button>
+                    <button>
+                        <img src="./~images/assets/skin10.png" onclick="setSkinColour('skin10')" alt="">
+                    </button>
+                </div>
         </section>
         <aside>
-            <div class="option-group" id="colours-options">
-                <h2>colours</h2>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
-                <button>
-                    <img src="" alt="">
-                </button>
+            <div class="option-group" id="colours-panel">
+                <h2 id="colours-title">colours</h2>
+                <div id="colours-content">
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour1.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour2.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour3.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour4.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour5.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour6.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour7.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour8.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour9.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour10.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour11.png" alt="error">
+                    </button>
+                    <button class="colour-btn">
+                        <img src="./~images/assets/colour12.png" alt="error">
+                    </button>
+                </div>
             </div>
-            <div class="option-group" id="shapes-options">
-                <h2>shapes</h2>
-                <button>
-                    <img src="" alt="">
+            <div class="option-group" id="eyecolour-options">
+                <h2 id="eyecolour-title">eye colours</h2>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/deepBrown.png" onclick="setEyesColour('deepBrown')" alt="Deep Brown">
                 </button>
-                <button>
-                    <img src="" alt="">
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/warmAmber.png" onclick="setEyesColour('warmAmber')" alt="Warm Amber">
                 </button>
-                <button>
-                    <img src="" alt="">
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/softHazel.png" onclick="setEyesColour('softHazel')" alt="Soft Hazel">
+                </button>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/oliveGreen.png" onclick="setEyesColour('oliveGreen')" alt="Olive Green">
+                </button>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/sageGreen.png"onclick="setEyesColour('sageGreen')" alt="Sage Green">
+                </button>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/skyBlue.png" onclick="setEyesColour('skyBlue')" alt="Sky blue">
+                </button>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/iceBlue.png" onclick="setEyesColour('iceBlue')" alt="Ice Blue">
+                </button>
+                <button class="eyecolour-btn">
+                    <img src="./~images/assets/grayAmethyst.png" onclick="setEyesColour('greyAmethyst')" alt="Grey Amethyst">
                 </button>
             </div>
             <button id="download-btn">download your bloomii!</button>

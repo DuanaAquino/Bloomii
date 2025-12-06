@@ -49,14 +49,18 @@ header{
 main{
     display: grid;
     grid-auto-flow: column;
-    margin: 5rem;
+    margin: 2rem 5rem;
 }
-                                                /* controls */
+
+h2{
+    text-align: center;
+}
+                                                                        /* controls */
 .side-menu{
     position: absolute;
-    left: 5.3%;
+    left: 4.3%;
     top: 12%;
-    transform: translateY(50%);
+    transform: translateY(37%);
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -64,30 +68,32 @@ main{
 
 }
 .side-menu button{
-    background-color: var(--blush-puff);
+    background-color: var(--logo-green);
     border: none;
     border-radius: 4.3rem 0 0 4.3rem;
-    padding: 1rem 1rem;
+    padding: 2rem 2rem;
     cursor: pointer;
     transition: all 0.2s;
 }
 .side-menu button:hover{
-    background-color: var(--logo-green);
+    background-color: #a9e8c2;
+}
+.side-menu button.active-btn{
+    background-color: var(--blush-puff);
 }
 
 .cards-container{
     position: relative;
-    margin-left: 2rem;
+    margin-left: 3.6rem;
     width: 25rem;
     height: 21.42rem;
 }
-
 .card{
-    background-color: #F4C8C2;
+    background-color: var(--logo-green);
     text-align: center;
     border: none;
     border-radius: 2rem;
-    padding: 1rem;
+    padding:  0.8rem 2rem 2rem;
     position: absolute;
     top: 0;
     left: 0;
@@ -97,46 +103,117 @@ main{
     opacity: 0;
     pointer-events: none;
 }
-
-
 .card.active{
+    background-color: var(--blush-puff);
     opacity: 1;
     transform: scale(1);
     pointer-events: all;
-    z-index: 1;
+    z-index: 10;
+    padding-bottom: 3rem;
+}
+
+.card h2{
+    text-align: center;
+    margin: 0.7rem 0 0.7rem 0;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .middle-section{
+    margin: -2rem 0 2rem 0;
+    padding-left: 11rem;
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
-/*                          avatar container                         */
+/*                                                                           avatar container                                                            */
 .avatar-container{
-    text-align: center;
     position: relative;
-    width: 450px;
+    width: 30rem;
+    height: 30rem;
 }
 #base-avatar{
-    padding-left: 4.5rem;
+    padding-left: 2rem;
     position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
 }
+.skin-colours{
+    margin-top: 5rem;
+    position: relative;
+    z-index: 20;
+}
+#skinshadow-layer{
+    padding-left: 2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
 #skin-layer{
-    padding-left: 4.5rem;
+    padding-left: 2rem;
     position: absolute;
     filter: invert(97%) sepia(19%) saturate(972%) hue-rotate(302deg) brightness(101%) contrast(96%);
     transition: filter 0.3s ease;
     top: 0;
     left: 0;
 }
+#eyes-stroke{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    padding-left: 2rem;
+}
+#eyes-paint{
+    filter: invert(16%) sepia(69%) saturate(576%) hue-rotate(351deg) brightness(92%) contrast(91%);
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 2rem;
+}
 
-/*                            skin controls                                */
+#hair-stroke{
+    padding-left: 2rem;
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    left: 0;
+}
+#hair-shadows{
+    padding-left: 2rem;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+}
+#hair-paint{
+    padding-left: 2rem;
+    z-index: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.hair-btn img{
+    width: 5rem;
+}
+.hair-btn{
+    background-color: var(--pillow-white);
+    border: none;
+    border-radius: 2rem;
+    padding: 1.5rem .5rem -.5rem .5rem;
+    cursor: pointer;
+    margin: .5rem;
+}
+.hair-btn:hover{
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/*                                                                         skin controls                                                                                */
 #skin-colours-options{
-    padding: 2rem;
+    padding: 0 4rem 0 3rem;
 }
 #skin-colours-options > button{ 
     margin: .3rem;
@@ -145,35 +222,106 @@ main{
     cursor: pointer;
     transition: transform 0.2s, filter 0.2s;
 }
-.skin-colour-button:hover img{
+#skin-colours-options button:hover img{
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+#card-skin button{
+    margin-top: .5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+                                                                             /* aside */
+aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3rem;
+    margin: 1.5rem 2rem 0 0;
+}
+.option-group{
+    background-color: var(--blush-puff);
+    text-align: center;
+    border: none;
+    border-radius: 2rem;
+    padding:  0.8rem 2rem 2rem;
+    width: 100%;
+}
+.option-group > button{
+    background-color: transparent;
+    border: none;
+}
+
+                                                                                     /* colours panel */
+
+#colours-panel{
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    flex-wrap: wrap;
+}
+#colours-title{
+    text-align: center;
+    margin-bottom: 0.7rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.7rem 0 0.7rem 0;
+}
+.colour-btn{
+    margin: .1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+.colour-btn:hover{
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+                                                                                   /* eyes colours panel */
+
+#eyecolour-options{
+    margin-top: 2rem;
+}
+#eyecolour-title{
+    margin: 0.7rem 0 0.7rem 0;
+    text-align: center;
+    margin-bottom: 0.7rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+.eyecolour-btn{
+    margin: .1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+.eyecolour-btn:hover{
     transform: scale(1.1);
     filter: brightness(1.2);
 }
 
-aside{
-    display: flex;
-    flex-direction: column;
-    margin-top: 2rem;
-}
-#shapes-options{
-    margin-top: 5rem;
-}
 #download-btn{
     display: flex;
     flex-direction: row;
-    margin-top: 3rem;
+    text-align: center;
+    margin-top: 2rem;
     background-color: var(--logo-green);
     border: none;
     border-radius: 3.5rem;
-    height: 7rem;
     color: var(--pillow-white);
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    padding: 1.1rem 1.92rem;
+    padding: 1rem 1.8rem;
+    cursor: pointer;
 
 }
 
 footer{
+    margin-top: -2rem;
     display: flex;
     color: var(--soft-umber);
     justify-content: flex-end;
