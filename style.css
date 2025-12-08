@@ -30,27 +30,24 @@ body {
     margin: 0;
     padding: 0;
     color: var(--pillow-white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: hidden;
 }
 
 header {
     display: flex;
     justify-content: center;
-    /* centraliza horizontal */
     align-items: center;
-    /* centraliza vertical */
     width: 100%;
 }
 
 header img {
     display: block;
-}
-
-.avatar-container {
-    display: flex;
-    left: 4rem;
-    width: 100%;
-    height: auto;
-    justify-content: center;
+    max-width: 220px;
+    width: 80%;
 }
 
 .pixel-art {
@@ -59,6 +56,7 @@ header img {
 }
 
 main {
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
@@ -69,102 +67,121 @@ h2 {
 }
 
 /* controls */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
 
-@media (max-width: 768px) {
+.menu {
+    flex: 1;
+    display: flex;
+    width: 100%; 
+    max-width: 100%;
+    justify-content: space-around; 
+    position: relative;
+    bottom: 0;
+    left: 0;
+    overflow-x: auto;
+    z-index: 5;
+    flex-wrap: nowrap;
+    padding: 0;
+    margin: 0; 
+}
 
-    .controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.menu-btn {
+    flex: 1;
+    height: clamp(100px, 10vw, 150px);
+    background-color: var(--logo-green);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem 1.5rem 0 0;
+    bottom: 10rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 50px;
+    position: relative;
+    top: 1px;
+}
 
-    .menu {
-        display: flex;
-        width: 100%;
-        max-width: 100vw;
-        left: 0;
-        background-color: transparent;
-    }
+.menu-btn:hover {
+    background-color: #a9e8c2;
+}
 
-    .menu-btn {
-        width: 3.8rem;
-        height: 7rem;
-        border: none;
-        background-color: var(--logo-green);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        border-radius: 2rem 2rem 0 0;
-    }
+.menu-btn.active-btn {
+    background-color: var(--blush-puff);
+}
 
-    .menu-btn:hover {
-        background-color: #a9e8c2;
-    }
+.menu-btn img {
+    width: clamp(22px, 10vw, 36px);
+    height: auto;
+    object-fit: contain;
+}
 
-    .menu-btn.active-btn {
-        background-color: var(--blush-puff);
-    }
+.cards-container {
+    width: 100%; 
+    display: flex;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
 
-    .menu-btn img {
-        width: 3rem;
-        height: 3rem;
-        padding-bottom: 1.5rem;
-        object-fit: contain;
-    }
+.card {
+    background-color: var(--logo-green);
+    text-align: center;
+    border: none;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
 
-    .cards-container {
-        width: 100%;
-        max-width: 100vw;
-        bottom: 2rem;
-        left: 0;
-        position: relative;
-    }
+.card.active {
+    background-color: var(--blush-puff);
+    opacity: 1;
+    padding: 0 1.5rem 8rem;
+    pointer-events: all;
+    z-index: 10;
+    width: 100%; 
+    margin-top: -2.4rem;
+    box-sizing: content-box; 
+    border-radius: 2rem;
+    left: -2rem;
+}
 
-    .card {
-        background-color: var(--logo-green);
-        text-align: center;
-        width: 22.5rem;
-        border: none;
-        border-radius: 2rem;
-        padding: 0.8rem 2rem 2rem;
-        transform: scale(0.95);
-        transition: all 0.3s ease;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    .card.active {
-        background-color: var(--blush-puff);
-        opacity: 1;
-        left: 0;
-        transform: scale(1);
-        pointer-events: all;
-        z-index: 10;
-        padding-bottom: 3rem;
-    }
-
-    .card h2 {
-        text-align: center;
-        margin: 0.7rem 0 0.7rem 0;
-        font-size: 2rem;
-        font-weight: 700;
-    }
+.card h2 {
+    background-color: var(--light-creamy-oat);
+    margin: 2rem 3rem;
+    padding: .2rem;
+    border-radius: 1.2rem;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 /*                                                                           avatar container                                                            */
 .avatar-container {
+    width: min(80vw, 20rem);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
     position: relative;
-    width: 20rem;
-    height: 20rem;
 }
 
-#base-avatar {
-    padding-left: 2rem;
+.avatar-container img {
     position: absolute;
-    z-index: 1;
     top: 0;
     left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /* .skin-colours{
@@ -173,61 +190,54 @@ h2 {
     z-index: 20;
 } */
 
+#base-avatar {
+    z-index: 3;
+}
+
 #skinshadow-layer {
-    padding-left: 2rem;
-    position: absolute;
-    left: 0;
-    top: 0;
     z-index: 2;
 }
 
 #skin-layer {
-    padding-left: 2rem;
-    position: absolute;
+    z-index: 1;
     filter: invert(97%) sepia(19%) saturate(972%) hue-rotate(302deg) brightness(101%) contrast(96%);
-    transition: filter 0.3s ease;
-    top: 0;
-    left: 0;
 }
 
 #eyes-stroke {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 3;
-    padding-left: 2rem;
+    z-index: 5;
 }
 
 #eyes-paint {
+    z-index: 4;
     filter: invert(16%) sepia(69%) saturate(576%) hue-rotate(351deg) brightness(92%) contrast(91%);
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding-left: 2rem;
-}
-
-#hair-stroke {
-    padding-left: 2rem;
-    position: absolute;
-    z-index: 6;
-    top: 0;
-    left: 0;
 }
 
 #hair-shadows {
-    padding-left: 2rem;
-    position: absolute;
-    z-index: 5;
-    top: 0;
-    left: 0;
+    z-index: 7;
 }
 
 #hair-paint {
-    padding-left: 2rem;
-    z-index: 4;
-    position: absolute;
-    top: 0;
-    left: 0;
+    z-index: 6;
+}
+
+#hair-stroke {
+    z-index: 8;
+}
+
+#top-layer {
+    z-index: 9;
+}
+
+#bottom-layer {
+    z-index: 10;
+}
+
+#shoes-layer {
+    z-index: 11;
+}
+
+#accessories-layer {
+    z-index: 12;
 }
 
 /* hair controls */
@@ -240,7 +250,7 @@ h2 {
     background-color: var(--pillow-white);
     border: none;
     border-radius: 2rem;
-    padding: 1.5rem .5rem -.5rem .5rem;
+    padding: 1.5rem .5rem .5rem .5rem;
     cursor: pointer;
     margin: .5rem;
 }
@@ -260,7 +270,7 @@ h2 {
     background-color: var(--pillow-white);
     border: none;
     border-radius: 2rem;
-    padding: 1.5rem .5rem -.5rem .5rem;
+    padding: 1.5rem .5rem .5rem .5rem;
     cursor: pointer;
     margin: .5rem;
 }
@@ -393,9 +403,8 @@ aside {
 }
 
 footer {
-    margin-top: -2rem;
     display: flex;
     color: var(--soft-umber);
     justify-content: flex-end;
-    padding-right: 2rem;
+    padding: 2rem;
 }
