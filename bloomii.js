@@ -1,24 +1,17 @@
 // function to alternate the controls cards' menu:
 
-function showCard(cardName) {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => card.classList.remove('active'));
+function showCard(card) {
+    document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+    document.getElementById("card-" + card).classList.add("active");
 
-    const selected = document.getElementById(`card-${cardName}`);
-    selected.classList.add('active');
+    document.querySelectorAll(".menu-btn").forEach(b => b.classList.remove("active-btn"));
+    document.getElementById(card + "-options").classList.add("active-btn");
 
-    const buttons = document.querySelectorAll('.side-menu button');
-    buttons.forEach(btn => btn.classList.remove('active-btn'));
-
-    const activeBtn = document.querySelector(`[onclick="showCard('${cardName}')"]`);
-    if (activeBtn) activeBtn.classList.add('active-btn');
-
-    updateColoursPanel(cardName);
+    updateColoursPanel(card);
 }
 
 function updateColoursPanel(category) {
     const coloursContainer = document.getElementById("colours-content");
-
     if (!coloursContainer) return;
 
     let html = "";
@@ -76,71 +69,71 @@ function updateColoursPanel(category) {
         `;
     }
 
-    else if (category === "top-clothes") {
+    else if (category === "top") {
         html = `
-            <button onclick="setClothesColour('colour1')" class="class="colour-btn" colour1"></button>
-            <button onclick="setClothesColour('colour2')" class="class="colour-btn" colour2"></button>
-            <button onclick="setClothesColour('colour3')" class="class="colour-btn" colour3"></button>
-            <button onclick="setClothesColour('colour4')" class="class="colour-btn" colour4"></button>
-            <button onclick="setClothesColour('colour5')" class="class="colour-btn" colour5"></button>
-            <button onclick="setClothesColour('colou6')" class="class="colour-btn" colour6"></button>
-            <button onclick="setClothesColour('colour7')" class="class="colour-btn" colour7"></button>
-            <button onclick="setClothesColour('colour8')" class="class="colour-btn" colour8"></button>
-            <button onclick="setClothesColour('colour9')" class="class="colour-btn" colour9"></button>
-            <button onclick="setClothesColour('colour10')" class="class="colour-btn" colour10"></button>
-            <button onclick="setClothesColour('colour11')" class="class="colour-btn" colour11"></button>
-            <button onclick="setClothesColour('colour12')" class="class="colour-btn" colour12"></button>
+            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
         `;
     }
 
-    else if (category === "bottom-clothes") {
+    else if (category === "bottom") {
         html = `
-            <button onclick="setClothesColour('colour1')" class="class="colour-btn" colour1"></button>
-            <button onclick="setClothesColour('colour2')" class="class="colour-btn" colour2"></button>
-            <button onclick="setClothesColour('colour3')" class="class="colour-btn" colour3"></button>
-            <button onclick="setClothesColour('colour4')" class="class="colour-btn" colour4"></button>
-            <button onclick="setClothesColour('colour5')" class="class="colour-btn" colour5"></button>
-            <button onclick="setClothesColour('colou6')" class="class="colour-btn" colour6"></button>
-            <button onclick="setClothesColour('colour7')" class="class="colour-btn" colour7"></button>
-            <button onclick="setClothesColour('colour8')" class="class="colour-btn" colour8"></button>
-            <button onclick="setClothesColour('colour9')" class="class="colour-btn" colour9"></button>
-            <button onclick="setClothesColour('colour10')" class="class="colour-btn" colour10"></button>
-            <button onclick="setClothesColour('colour11')" class="class="colour-btn" colour11"></button>
-            <button onclick="setClothesColour('colour12')" class="class="colour-btn" colour12"></button>
+            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
         `;
     }
 
     else if (category === "shoes") {
         html = `
-            <button onclick="setClothesColour('colour1')" class="class="colour-btn" colour1"></button>
-            <button onclick="setClothesColour('colour2')" class="class="colour-btn" colour2"></button>
-            <button onclick="setClothesColour('colour3')" class="class="colour-btn" colour3"></button>
-            <button onclick="setClothesColour('colour4')" class="class="colour-btn" colour4"></button>
-            <button onclick="setClothesColour('colour5')" class="class="colour-btn" colour5"></button>
-            <button onclick="setClothesColour('colou6')" class="class="colour-btn" colour6"></button>
-            <button onclick="setClothesColour('colour7')" class="class="colour-btn" colour7"></button>
-            <button onclick="setClothesColour('colour8')" class="class="colour-btn" colour8"></button>
-            <button onclick="setClothesColour('colour9')" class="class="colour-btn" colour9"></button>
-            <button onclick="setClothesColour('colour10')" class="class="colour-btn" colour10"></button>
-            <button onclick="setClothesColour('colour11')" class="class="colour-btn" colour11"></button>
-            <button onclick="setClothesColour('colour12')" class="class="colour-btn" colour12"></button>
+            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
         `;
     }
 
     else if (category === "accessories") {
         html = `
-            <button onclick="setClothesColour('colour1')" class="class="colour-btn" colour1"></button>
-            <button onclick="setClothesColour('colour2')" class="class="colour-btn" colour2"></button>
-            <button onclick="setClothesColour('colour3')" class="class="colour-btn" colour3"></button>
-            <button onclick="setClothesColour('colour4')" class="class="colour-btn" colour4"></button>
-            <button onclick="setClothesColour('colour5')" class="class="colour-btn" colour5"></button>
-            <button onclick="setClothesColour('colou6')" class="class="colour-btn" colour6"></button>
-            <button onclick="setClothesColour('colour7')" class="class="colour-btn" colour7"></button>
-            <button onclick="setClothesColour('colour8')" class="class="colour-btn" colour8"></button>
-            <button onclick="setClothesColour('colour9')" class="class="colour-btn" colour9"></button>
-            <button onclick="setClothesColour('colour10')" class="class="colour-btn" colour10"></button>
-            <button onclick="setClothesColour('colour11')" class="class="colour-btn" colour11"></button>
-            <button onclick="setClothesColour('colour12')" class="class="colour-btn" colour12"></button>
+            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
+            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
         `;
     }
 
@@ -228,14 +221,73 @@ function setHairColour(color) {
 
     const hairButtons = document.querySelectorAll("#card-hair img");
     hairButtons.forEach(img => {
-        img.style.filert = filters[color];
+        img.style.filter = filters[color];
     });
 }
 
-function recolourHairButtons(filter) {
-    const hairBtns = document.querySelectorAll(".hair-btn > img");
-    hairBtns.forEach(img => {
-        img.style.filter = filter;
-    });
+// change clothes:
+
+function setTopClothes(model) {
+    const topClothesStroke = document.getElementById('topclothes-stroke');
+    const topClothesPaint = document.getElementById('topclothes-paint');
+
+    topClothesStroke.src = `./~images/assets/stroke-${model}.png`;
+    topClothesPaint.src = `./~images/assets/${model}.png`;
 }
 
+function setBottomClothes(model) {
+    const bottomClothesStroke = document.getElementById('bottomclothes-stroke');
+    const bottomClothesPaint = document.getElementById('bottomclothes-paint');
+
+    bottomClothesStroke.src = `./~images/assets/stroke-${model}.png`;
+    bottomClothesPaint.src = `./~images/assets/${model}.png`;
+}
+
+// change shoes:
+
+function setShoes(model) {
+    const ShoesStroke = document.getElementById('shoes-stroke');
+    const ShoesPaint = document.getElementById('shoes-paint');
+
+    ShoesStroke.src = `./~images/assets/stroke-${model}.png`;
+    ShoesPaint.src = `./~images/assets/${model}.png`;
+}
+
+// change accessories:
+
+function setAccessories(model) {
+    const accessoriesStroke = document.getElementById('accessories-stroke');
+    const accessoriesPaint = document.getElementById('accessories-paint');
+
+    accessoriesStroke.src = `./~images/assets/stroke-${model}.png`;
+    accessoriesPaint.src = `./~images/assets/${model}.png`;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    updateColoursPanel("hair");
+});
+
+function updatePanelsVisibility(activeCard) {
+
+    const colours = document.getElementById("colours-panel");
+    const eyes = document.getElementById("eyecolour-options");
+    const skin = document.getElementById("skin-colours-options");
+
+    // esconde tudo
+    colours.style.display = "none";
+    eyes.style.display = "none";
+    skin.style.display = "none";
+
+    // mapeamento inteligente
+    const panelMap = {
+        hair: "colours",
+        top: "colours",
+        bottom: "colours",
+        shoes: "colours",
+        accessories: "colours"
+    };
+
+    // mostra painel certo
+    if (panelMap[activeCard] === "colours") colours.style.display = "flex";
+    if (activeCard === "eyes") eyes.style.display = "flex";
+    if (activeCard === "skin") skin.style.display = "flex";
