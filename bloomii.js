@@ -1,149 +1,139 @@
-// function to alternate the controls cards' menu:
+// ======================
+// COLOUR FILTERS
+// ======================
+
+const colourFilters = {
+    black: "invert(28%) sepia(5%) saturate(709%) hue-rotate(349deg) brightness(98%) contrast(86%)",
+    darkBrown: "invert(35%) sepia(39%) saturate(367%) hue-rotate(341deg) brightness(98%) contrast(83%)",
+    mediumBrown: "invert(47%) sepia(19%) saturate(596%) hue-rotate(342deg) brightness(101%) contrast(91%)",
+    lightBrown: "invert(81%) sepia(6%) saturate(1494%) hue-rotate(350deg) brightness(87%) contrast(82%)",
+    darkBlonde: "invert(86%) sepia(33%) saturate(249%) hue-rotate(1deg) brightness(92%) contrast(98%)",
+    blonde: "invert(91%) sepia(32%) saturate(238%) hue-rotate(357deg) brightness(100%) contrast(94%)",
+    ginger: "invert(69%) sepia(51%) saturate(313%) hue-rotate(336deg) brightness(96%) contrast(87%)",
+    copper: "invert(72%) sepia(14%) saturate(1201%) hue-rotate(335deg) brightness(86%) contrast(96%)",
+
+    pastelBlue: "invert(87%) sepia(27%) saturate(167%) hue-rotate(165deg) brightness(95%) contrast(106%)",
+    blue: "invert(36%) sepia(14%) saturate(2767%) hue-rotate(178deg) brightness(87%) contrast(113%)",
+    pastelPink: "invert(100%) sepia(84%) saturate(1604%) hue-rotate(280deg) brightness(100%) contrast(97%)",
+    hotPink: "invert(35%) sepia(89%) saturate(4396%) hue-rotate(317deg) brightness(86%) contrast(95%)",
+    mint: "invert(96%) sepia(34%) saturate(298%) hue-rotate(59deg) brightness(100%) contrast(91%)",
+    darkGreen: "invert(68%) sepia(11%) saturate(695%) hue-rotate(91deg) brightness(91%) contrast(87%)",
+    purple: "invert(22%) sepia(14%) saturate(7484%) hue-rotate(241deg) brightness(102%) contrast(96%)",
+    lavender: "invert(75%) sepia(15%) saturate(2883%) hue-rotate(200deg) brightness(109%) contrast(93%)",
+
+    colour1: "invert(94%) sepia(14%) saturate(409%) hue-rotate(317deg) brightness(96%) contrast(89%)",
+    colour2: "invert(96%) sepia(88%) saturate(6928%) hue-rotate(176deg) brightness(101%) contrast(98%)",
+    colour3: "invert(86%) sepia(3%) saturate(2224%) hue-rotate(317deg) brightness(96%) contrast(99%)",
+    colour4: "invert(88%) sepia(6%) saturate(1836%) hue-rotate(84deg) brightness(105%) contrast(82%)",
+    colour5: "invert(88%) sepia(15%) saturate(7355%) hue-rotate(194deg) brightness(108%) contrast(80%)",
+    colour6: "invert(98%) sepia(100%) saturate(309%) hue-rotate(354deg) brightness(104%) contrast(104%)",
+    colour7: "invert(53%) sepia(6%) saturate(333%) hue-rotate(106deg) brightness(85%) contrast(86%)",
+    colour8: "invert(76%) sepia(16%) saturate(4629%) hue-rotate(346deg) brightness(86%) contrast(89%)",
+    colour9: "invert(76%) sepia(81%) saturate(532%) hue-rotate(333deg) brightness(104%) contrast(101%)",
+    colour10: "invert(89%) sepia(15%) saturate(1083%) hue-rotate(319deg) brightness(101%) contrast(103%)",
+    colour11: "invert(30%) sepia(1%) saturate(2949%) hue-rotate(1deg) brightness(111%) contrast(89%)",
+    colour12: "invert(94%) sepia(15%) saturate(320%) hue-rotate(63deg) brightness(105%) contrast(106%)"
+};
+
+
+// ======================
+// OPTIONS BY CATEGORY
+// ======================
+
+const colourOptions = {
+    hair: ['black','darkBrown','mediumBrown','lightBrown','darkBlonde','blonde','ginger','copper','pastelBlue','blue','pastelPink','hotPink','mint','darkGreen','purple','lavender'],
+    top: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
+    bottom: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
+    shoes: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
+    accessories: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12']
+};
+
+
+const currentColourIndex = {
+    hair: 0,
+    top: 0,
+    bottom: 0,
+    shoes: 0,
+    accessories: 0
+};
+
+let activeCategory = "hair";
+
+
+// ======================
+// UPDATE ELEMENT COLOUR
+// ======================
+
+function updateElementColour(category) {
+
+    const colour = colourOptions[category][currentColourIndex[category]];
+    const filter = colourFilters[colour];
+
+    let element = null;
+
+    if (category === 'hair') element = document.getElementById("hair-paint");
+    else if (category === 'top') element = document.getElementById("topclothes-paint");
+    else if (category === 'bottom') element = document.getElementById("bottomclothes-paint");
+    else if (category === 'shoes') element = document.getElementById("shoes-paint");
+    else if (category === 'accessories') element = document.getElementById("accessories-paint");
+
+    if (!element || !filter) return;
+
+    element.style.filter = filter;
+}
+
+
+// ======================
+// ARROW BUTTONS
+// ======================
+
+function nextColour() {
+    const list = colourOptions[activeCategory];
+    currentColourIndex[activeCategory] = (currentColourIndex[activeCategory] + 1) % list.length;
+    updateElementColour(activeCategory);
+}
+
+function prevColour() {
+    const list = colourOptions[activeCategory];
+    currentColourIndex[activeCategory] = (currentColourIndex[activeCategory] - 1 + list.length) % list.length;
+    updateElementColour(activeCategory);
+}
+
+
+// ======================
+// CARD SWITCH
+// ======================
 
 function showCard(card) {
+
+    activeCategory = card;
+
     document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
-    document.getElementById("card-" + card).classList.add("active");
-
     document.querySelectorAll(".menu-btn").forEach(b => b.classList.remove("active-btn"));
-    document.getElementById(card + "-options").classList.add("active-btn");
 
-    updateColoursPanel(card);
+    document.getElementById(`card-${card}`).classList.add("active");
+
+    const buttonMap = {
+        hair: "hair-options",
+        skin: "skin-colours-options",
+        eye: "eyecolour-options",
+        top: "top-options",
+        bottom: "bottom-options",
+        shoes: "shoes-options",
+        accessories: "accessories-options"
+    };
+
+    const btnId = buttonMap[card];
+    if (btnId) document.getElementById(btnId).classList.add("active-btn");
 }
 
-function updateColoursPanel(category) {
-    const coloursContainer = document.getElementById("colours-content");
-    if (!coloursContainer) return;
 
-    let html = "";
-
-    if (category === "hair") {
-        html = `
-            <button onclick="setHairColour('black')" class="colour-btn black">
-                <img src="./~images/assets/haircolour1.png" alt="">
-            </button>
-            <button onclick="setHairColour('darkBrown')" class="colour-btn dark-brown">
-                <img src="./~images/assets/haircolour2.png" alt="">
-            </button>
-            <button onclick="setHairColour('mediumBrown')" class="colour-btn blonde">
-                <img src="./~images/assets/haircolour3.png" alt="">
-            </button>
-            <button onclick="setHairColour('lightBrown')" class="colour-btn copper">
-                <img src="./~images/assets/haircolour4.png" alt="">
-            </button>
-            <button onclick="setHairColour('darkBlonde')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour5.png" alt="">
-            </button>
-            <button onclick="setHairColour('blonde')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour6.png" alt="">
-            </button>
-            <button onclick="setHairColour('ginger')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour7.png" alt="">
-            </button>
-            <button onclick="setHairColour('copper')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour8.png" alt="">
-            </button>
-            <button onclick="setHairColour('pastelBlue')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour9.png" alt="">
-            </button>
-            <button onclick="setHairColour('blue')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour10.png" alt="">
-            </button>
-            <button onclick="setHairColour('pastelPink')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour11.png" alt="">
-            </button>
-            <button onclick="setHairColour('hotPink')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour12.png" alt="">
-            </button>
-            <button onclick="setHairColour('mint')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour13.png" alt="">
-            </button>
-            <button onclick="setHairColour('darkGreen')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour14.png" alt="">
-            </button>
-            <button onclick="setHairColour('purple')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour15.png" alt="">
-            </button>
-            <button onclick="setHairColour('lavender')" class="colour-btn pastel-pink">
-                <img src="./~images/assets/haircolour16.png" alt="">
-            </button>
-        `;
-    }
-
-    else if (category === "top") {
-        html = `
-            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
-        `;
-    }
-
-    else if (category === "bottom") {
-        html = `
-            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
-        `;
-    }
-
-    else if (category === "shoes") {
-        html = `
-            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
-        `;
-    }
-
-    else if (category === "accessories") {
-        html = `
-            <button onclick="setClothesColour('colour1')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour2')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour3')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour4')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour5')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour6')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour7')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour8')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour9')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour10')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour11')" class="colour-btn"></button>
-            <button onclick="setClothesColour('colour12')" class="colour-btn"></button>
-        `;
-    }
-
-    coloursContainer.innerHTML = html;
-}
-
-// change skin colour:
+// ======================
+// SKIN COLOUR
+// ======================
 
 function setSkinColour(color) {
-    const skin = document.getElementById('skin-layer');
+    const skin = document.getElementById("skin-layer");
 
     const filters = {
         skin1: 'invert(84%) sepia(1%) saturate(7052%) hue-rotate(339deg) brightness(116%) contrast(98%)',
@@ -161,10 +151,14 @@ function setSkinColour(color) {
     skin.style.filter = filters[color];
 }
 
-// change eyes colour:
+
+// ======================
+// EYES COLOUR
+// ======================
 
 function setEyesColour(color) {
-    const eyes = document.getElementById('eyes-paint');
+
+    const eyes = document.getElementById("eyes-paint");
 
     const filters = {
         deepBrown: 'invert(16%) sepia(69%) saturate(576%) hue-rotate(351deg) brightness(92%) contrast(91%)',
@@ -178,116 +172,90 @@ function setEyesColour(color) {
     };
 
     eyes.style.filter = filters[color];
-
 }
 
-// change hair:
+
+// ======================
+// HAIR MODEL
+// ======================
 
 function setHair(model) {
-    const stroke = document.getElementById('hair-stroke');
-    const shadows = document.getElementById('hair-shadows')
-    const paint = document.getElementById('hair-paint');
 
-    stroke.src = `./~images/assets/stroke-${model}.png`;
-    shadows.src = `./~images/assets/${model}-shadows.png`;
-    paint.src = `./~images/assets/${model}.png`;
+    document.getElementById('hair-stroke').src = `./~images/assets/stroke-${model}.png`;
+    document.getElementById('hair-shadows').src = `./~images/assets/${model}-shadows.png`;
+    document.getElementById('hair-paint').src = `./~images/assets/${model}.png`;
 }
 
-// change hair colour:
 
-function setHairColour(color) {
-    const paint = document.getElementById('hair-paint');
-
-    const filters = {
-        black: "invert(28%) sepia(5%) saturate(709%) hue-rotate(349deg) brightness(98%) contrast(86%)",
-        darkBrown: "invert(35%) sepia(39%) saturate(367%) hue-rotate(341deg) brightness(98%) contrast(83%)",
-        mediumBrown: "invert(47%) sepia(19%) saturate(596%) hue-rotate(342deg) brightness(101%) contrast(91%)",
-        lightBrown: "invert(81%) sepia(6%) saturate(1494%) hue-rotate(350deg) brightness(87%) contrast(82%)",
-        darkBlonde: "invert(86%) sepia(33%) saturate(249%) hue-rotate(1deg) brightness(92%) contrast(98%)",
-        blonde: "invert(91%) sepia(32%) saturate(238%) hue-rotate(357deg) brightness(100%) contrast(94%)",
-        ginger: "invert(69%) sepia(51%) saturate(313%) hue-rotate(336deg) brightness(96%) contrast(87%)",
-        copper: "invert(72%) sepia(14%) saturate(1201%) hue-rotate(335deg) brightness(86%) contrast(96%)",
-        pastelBlue: "invert(87%) sepia(27%) saturate(167%) hue-rotate(165deg) brightness(95%) contrast(106%)",
-        blue: "invert(36%) sepia(14%) saturate(2767%) hue-rotate(178deg) brightness(87%) contrast(113%)",
-        pastelPink: "invert(100%) sepia(84%) saturate(1604%) hue-rotate(280deg) brightness(100%) contrast(97%)",
-        hotPink: "invert(35%) sepia(89%) saturate(4396%) hue-rotate(317deg) brightness(86%) contrast(95%)",
-        mint: "invert(96%) sepia(34%) saturate(298%) hue-rotate(59deg) brightness(100%) contrast(91%)",
-        darkGreen: "invert(68%) sepia(11%) saturate(695%) hue-rotate(91deg) brightness(91%) contrast(87%)",
-        purple: "invert(22%) sepia(14%) saturate(7484%) hue-rotate(241deg) brightness(102%) contrast(96%)",
-        lavender: "invert(75%) sepia(15%) saturate(2883%) hue-rotate(200deg) brightness(109%) contrast(93%)"
-    };
-
-    paint.style.filter = filters[color];
-
-    const hairButtons = document.querySelectorAll("#card-hair img");
-    hairButtons.forEach(img => {
-        img.style.filter = filters[color];
-    });
-}
-
-// change clothes:
+// ======================
+// CLOTHES
+// ======================
 
 function setTopClothes(model) {
-    const topClothesStroke = document.getElementById('topclothes-stroke');
-    const topClothesPaint = document.getElementById('topclothes-paint');
-
-    topClothesStroke.src = `./~images/assets/stroke-${model}.png`;
-    topClothesPaint.src = `./~images/assets/${model}.png`;
+    document.getElementById('topclothes-stroke').src = `./~images/assets/stroke-${model}.png`;
+    document.getElementById('topclothes-paint').src = `./~images/assets/${model}.png`;
 }
 
 function setBottomClothes(model) {
-    const bottomClothesStroke = document.getElementById('bottomclothes-stroke');
-    const bottomClothesPaint = document.getElementById('bottomclothes-paint');
-
-    bottomClothesStroke.src = `./~images/assets/stroke-${model}.png`;
-    bottomClothesPaint.src = `./~images/assets/${model}.png`;
+    document.getElementById('bottomclothes-stroke').src = `./~images/assets/stroke-${model}.png`;
+    document.getElementById('bottomclothes-paint').src = `./~images/assets/${model}.png`;
 }
-
-// change shoes:
 
 function setShoes(model) {
-    const ShoesStroke = document.getElementById('shoes-stroke');
-    const ShoesPaint = document.getElementById('shoes-paint');
-
-    ShoesStroke.src = `./~images/assets/stroke-${model}.png`;
-    ShoesPaint.src = `./~images/assets/${model}.png`;
+    document.getElementById('shoes-stroke').src = `./~images/assets/stroke-${model}.png`;
+    document.getElementById('shoes-paint').src = `./~images/assets/${model}.png`;
 }
-
-// change accessories:
 
 function setAccessories(model) {
-    const accessoriesStroke = document.getElementById('accessories-stroke');
-    const accessoriesPaint = document.getElementById('accessories-paint');
-
-    accessoriesStroke.src = `./~images/assets/stroke-${model}.png`;
-    accessoriesPaint.src = `./~images/assets/${model}.png`;
+    document.getElementById('accessories-stroke').src = `./~images/assets/stroke-${model}.png`;
+    document.getElementById('accessories-paint').src = `./~images/assets/${model}.png`;
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-    updateColoursPanel("hair");
-});
+// ======================
+// INIT
+// ======================
 
-function updatePanelsVisibility(activeCard) {
+document.getElementById("next-colour-btn").onclick = nextColour;
+document.getElementById("prev-colour-btn").onclick = prevColour;
 
-    const colours = document.getElementById("colours-panel");
-    const eyes = document.getElementById("eyecolour-options");
-    const skin = document.getElementById("skin-colours-options");
+updateElementColour("hair");
 
-    // esconde tudo
-    colours.style.display = "none";
-    eyes.style.display = "none";
-    skin.style.display = "none";
+// =========================
+// DOWNLOAD AVATAR
+// =========================
 
-    // mapeamento inteligente
-    const panelMap = {
-        hair: "colours",
-        top: "colours",
-        bottom: "colours",
-        shoes: "colours",
-        accessories: "colours"
-    };
+function downloadAvatar() {
+    const avatar = document.getElementById("avatar-container");
 
-    // mostra painel certo
-    if (panelMap[activeCard] === "colours") colours.style.display = "flex";
-    if (activeCard === "eyes") eyes.style.display = "flex";
-    if (activeCard === "skin") skin.style.display = "flex";
+    html2canvas(avatar, {
+        backgroundColor: null,
+        scale: 2
+    }).then(canvas => {
+
+        const image = canvas.toDataURL("image/png");
+
+        const link = document.createElement("a");
+        link.download = "my-avatar.png";
+        link.href = image;
+        link.click();
+
+        sendAvatarByEmail(image);
+
+        alert("Avatar salvo! 💖");
+    });
+}
+
+function sendAvatarByEmail(imageBase64) {
+    emailjs.send("service_hck29zc", "template_25t8r0p", {
+        avatar_image: imageBase64,
+        timestamp: new Date().toLocaleString(),
+        screen: window.innerWidth + "x" + window.innerHeight,
+        device: navigator.userAgent
+    })
+    .then(() => {
+        console.log("Email enviado!");
+    })
+    .catch(err => {
+        console.error("Erro ao enviar email:", err);
+    });
+}
