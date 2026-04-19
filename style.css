@@ -364,20 +364,6 @@ aside {
     margin: 0.7rem 0 0.7rem 0;
 }
 
-/* eyes colours panel */
-
-/* #eyecolour-options {
-    margin-top: 2rem;
-} */
-
-/* #eyecolour-title {
-    margin: 0.7rem 0 0.7rem 0;
-    text-align: center;
-    margin-bottom: 0.7rem;
-    font-size: 2rem;
-    font-weight: 700;
-} */
-
 .eyes-btn {
     margin-top: .5rem;
     background-color: transparent;
@@ -415,57 +401,119 @@ footer {
     margin-top: 1rem;
 }
 
-/* ===================== */
-/* DESKTOP CENTER LAYOUT */
-/* ===================== */
-/* 
+/* ========================================= */
+/* LAYOUT DESKTOP    */
+/* ========================================= */
+
 @media (min-width: 900px) {
 
-    body {
-        display: flex;
-        justify-content: center;
+    * {
+        box-sizing: border-box;
     }
 
-    .app-wrapper {
-        width: 100%;
+    main {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr; 
+        gap: 40px;
+        align-items: center; /* Centraliza o grid verticalmente na tela */
+        padding: 40px;
+        min-height: 100vh;
         max-width: 1200px;
         margin: 0 auto;
+    }
+
+    .controls {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: var(--light-creamy-oat);
-        border-radius: 24px;
-        padding: 2rem;
-        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-    }
-
-
-    .cards-container {
-        max-width: 100%;
-        justify-content: center;
-    }
-
-    .menu {
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .menu-btn {
-        max-width: 110px;
+        flex-direction: row; /* Mantém Menu à esquerda e Card à direita */
+        align-items: left;
+        width: 100%;
     }
 
     .avatar-container {
-        width: 320px;
+        /* Aumentamos o tamanho base do container do avatar */
+        width: min(90vw, 32rem); 
+        transition: transform 0.3s ease;
     }
 
-    #download-btn {
-        margin: 2rem auto;
-        display: block;
+    #avatar-controls {
+        transform: scale(1.2); /* Aumenta visualmente todo o conjunto do avatar */
     }
 
-    header, 
-    footer {
+    .pixel-art {
+        image-rendering: pixelated; 
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: auto;
+        z-index: 0; 
+        margin: 0 -11rem 0 2rem; 
+    }
+
+    .menu-btn {
+        flex: 0 0 auto;
+        width: 5.5rem;
+        height: 5rem;
+        border-radius: 1.5rem 0 0 1.5rem;
+        position: relative;
+        cursor: pointer; /* Agora vai funcionar! */
+        border: none;
+        background-color: var(--logo-green); /* Cor padrão para o hover aparecer */
+        transition: all 0.2s ease;
+    }
+
+    .menu-btn:hover {
+        background-color: #a9e8c2;
+        transform: translateX(2px); 
+    }
+
+    .menu-btn.active-btn {
+        background-color: var(--blush-puff);
+    }
+
+    .menu-btn > img{
+        width: 6rem;
+    }
+
+    .buttons-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+        gap: 10px;
+        height: auto;           
+        max-height: none;       /* Remove qualquer trava de altura */
+        overflow: visible;      /* Impede o surgimento de barras */
+        flex-grow: 1;
+        
+    }
+    
+    .buttons-grid::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .cards-container {
+        flex: 1;                
+        background-color: var(--blush-puff);
+        border-radius: 1rem;
+        padding: 2rem;
+        min-height: 35rem;      
+        margin-left: -8rem;
+        display: flex;
+        flex-direction: column;
+        height: auto;          
+        overflow: visible;
+    }
+
+    .card.active {
+        position: relative;
         width: 100%;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background-color: transparent; 
+        opacity: 1;
+        overflow: visible;
+        height: auto;
     }
-} */
+    
+}

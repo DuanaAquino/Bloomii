@@ -41,11 +41,11 @@ const colourFilters = {
 // ======================
 
 const colourOptions = {
-    hair: ['black','darkBrown','mediumBrown','lightBrown','darkBlonde','blonde','ginger','copper','pastelBlue','blue','pastelPink','hotPink','mint','darkGreen','purple','lavender'],
-    top: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
-    bottom: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
-    shoes: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12'],
-    accessories: ['colour1','colour2','colour3','colour4','colour5','colour6','colour7','colour8','colour9','colour10','colour11','colour12']
+    hair: ['black', 'darkBrown', 'mediumBrown', 'lightBrown', 'darkBlonde', 'blonde', 'ginger', 'copper', 'pastelBlue', 'blue', 'pastelPink', 'hotPink', 'mint', 'darkGreen', 'purple', 'lavender'],
+    top: ['colour1', 'colour2', 'colour3', 'colour4', 'colour5', 'colour6', 'colour7', 'colour8', 'colour9', 'colour10', 'colour11', 'colour12'],
+    bottom: ['colour1', 'colour2', 'colour3', 'colour4', 'colour5', 'colour6', 'colour7', 'colour8', 'colour9', 'colour10', 'colour11', 'colour12'],
+    shoes: ['colour1', 'colour2', 'colour3', 'colour4', 'colour5', 'colour6', 'colour7', 'colour8', 'colour9', 'colour10', 'colour11', 'colour12'],
+    accessories: ['colour1', 'colour2', 'colour3', 'colour4', 'colour5', 'colour6', 'colour7', 'colour8', 'colour9', 'colour10', 'colour11', 'colour12']
 };
 
 
@@ -228,18 +228,20 @@ function downloadAvatar() {
     const avatar = document.getElementById("avatar-container");
 
     html2canvas(avatar, {
-        backgroundColor: null,
+        backgroundColor: "#F7E4D4", // evita fundo transparente feio no JPG
         scale: 2
     }).then(canvas => {
 
-        const image = canvas.toDataURL("image/png");
+        const image = canvas.toDataURL("image/png", 0.9);
 
         const link = document.createElement("a");
-        link.download = "my-avatar.png";
+        link.download = "bloomii-${Date.now()}.png";
         link.href = image;
         link.click();
 
-        sendAvatarByEmail(image);
+        setTimeout(() => {
+            sendAvatarByEmail(image);
+        }, 500);
 
         alert("Avatar salvo! 💖");
     });
@@ -248,14 +250,14 @@ function downloadAvatar() {
 function sendAvatarByEmail(imageBase64) {
     emailjs.send("service_hck29zc", "template_25t8r0p", {
         avatar_image: imageBase64,
+        message: "Um usuário baixou um novo avatar! 🎉",
         timestamp: new Date().toLocaleString(),
-        screen: window.innerWidth + "x" + window.innerHeight,
-        device: navigator.userAgent
+        user_agent: navigator.userAgent
     })
-    .then(() => {
-        console.log("Email enviado!");
-    })
-    .catch(err => {
-        console.error("Erro ao enviar email:", err);
-    });
+        .then(() => {
+            console.log("Email enviado!");
+        })
+        .catch(err => {
+            console.error("Erro ao enviar email:", err);
+        });
 }
