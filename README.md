@@ -97,8 +97,7 @@ To enable email notifications:
 Create an account on EmailJS
 Add your Public Key:
 emailjs.init("YOUR_PUBLIC_KEY");
-In your template:
-<img src="{{avatar_image}}" />
+<img src="{{avatar_image}}">
 
 
 🎯 Future Improvements
