@@ -1,7 +1,6 @@
 🌸 Bloomii - Avatar Maker (Front-End Project)
 
   <img width="300" height="auto" alt="preview1" src="https://github.com/user-attachments/assets/4ccbcea2-483c-4294-a3bf-2949ff4ea8ad" />
-  <img width="auto" height="300" alt="preview2" src="https://github.com/user-attachments/assets/6f92d741-f1ee-4a21-a315-89da84a7ea9c" />
 
 Bloomii is an interactive avatar builder developed with a strong focus on front-end engineering principles such as component-based UI logic, state management, and responsive design.
 
